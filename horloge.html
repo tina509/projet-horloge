@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Horloge Temps Réel</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+    .clock {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      font-size: 4rem;
+      letter-spacing: 8px;
+      user-select: none;
+      text-align: center;
+      min-width: 320px;
+    }
+    .clock span {
+      display: inline-block;
+      min-width: 70px;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="clock">
+    00:00:00
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+
+      const timeString = `${hours}:${minutes}:${seconds}`;
+
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    // Met à jour immédiatement puis toutes les secondes
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
